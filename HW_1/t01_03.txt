@@ -1,0 +1,98 @@
+a)
+k += 1                  | 4
+i = n                   | 2
+while i > 0:            | 3 * (n + 1)
+    i -= 1              | 4 * n
+
+sum: 7n + 9
+
+
+b)
+i = n                   | 2
+while i > 1:            | 3 * (log(n) + 1)
+    k += 1              | 4 * log(n)
+    i //= 2             | 4 * log (n)
+
+n = 2^m -> m = log(n)
+
+n = 1  m = 0 -> loop block: 0
+n = 2  m = 1 -> loop block: 1
+n = 4  m = 2 -> loop block: 2
+n = 8  m = 3 -> loop block: 3
+n  , m  -> loop block: m
+
+sum: 11 log(n) + 5
+
+
+c)
+i = 0                   | 2
+while i < n:            | 3 * (n / 2 + 1) = (3n / 2) + 3
+    j = 0               | 2 * (n/2) = n
+    while j < n:        | 3 * (n/2) * (n/2 + 1) = (3n / 2) * (n/2 + 1) = (3n^2 / 4) + (3n / 2)
+        k += 1          | 4 * (n/2) * (n/2) = n^2
+        j += 2          | 4 * (n/2) * (n/2) = n^2
+    i += 2              | 4 * (n/2) = 2n
+
+n = 2, i = 1 -> loop block: 1
+n = 4, i = 2 -> loop block: 2
+n = 6, i = 3 -> loop block: 3
+n   , i      -> loop block: n / 2
+
+sum: (11n^2 / 4) + 6n + 5
+
+d)
+i = 0                   | 2
+while i < n:            | 3 * (n + 1) = 3n + 3
+    j = 0               | 2 * n
+    while j < i * i:    | 5 * ((2n^3 - 3n^2 + n) / 6) = (10n^3 - 15n^2 + 5n) / 6
+        k += 1          | 4 * ((2n^3 - 3n^2 + n) / 6) = (8n^3 - 12n^2 + 4n) / 6
+        j += 1          | 4 * ((2n^3 - 3n^2 + n) / 6) = (8n^3 - 12n^2 + 4n) / 6
+    i += 1              | 4 * n
+
+
+n = 1, i = 1 -> loop block: 0
+n = 2, i = 2 -> loop block: 0 + 1
+n = 3, i = 3 -> loop block: 0 + 1 + 4
+n    , i = n -> loop block: (n - 1)^2 + (n - 2)^2 + ... + 1 =
+                            = (n * (n - 1) * (2n-1)) / 6 = ((n^2 - n) * (2n-1)) / 6 = (2n^3 - n^2 - 2n^2 + n) / 6 = (2n^3 - 3n^2 + n)/ 6
+
+sum: (13n^3) / 3 - (13n^2) / 2 + (67n / 6) + 5
+
+e)
+i = 1                   | 2
+while i < n:            | 3 * (log(n) + 1)
+    j = 1               | 2 * log(n)
+    while j < n:        | 3 * log(n) * (log(n) + 1)
+        k += 1          | 4 * log(n) * log(n)
+        j *= 2          | 4 * log(n) * log(n)
+    i *= 2              | 4 * log(n)
+
+
+n = 2^m -> m = log(n)
+
+n = 1, m = 0 -> loop block: 0
+n = 2, m = 1 -> loop block: 1
+n = 4, m = 2 -> loop block: 2
+n = 8, m = 3 -> loop block: 3
+n    , m     -> loop block: m
+
+sum: 11 log^2(n) + 12 log(n) + 5
+
+f)
+i = 1                   | 2
+while i < n:            | 3 * (log(n) + 1)
+    j = i               | 2 * log(n)
+    while j < n:        | 3 * (m^2 + m) / 2 = (3m^2 + 3m) / 2 = (3 (log(n))^2 + 3 log(n)) / 2
+        k += 1          | 4 * (m^2 + m) / 2 = 2m^2 + 2m = 2 (log(n))^2 + 2 log(n)
+        j *= 2          | 4 * (m^2 + m) / 2 = 2m^2 + 2m = 2 (log(n))^2 + 2 log(n)
+    i *= 2              | 4 * log(n)
+
+n = 2^m -> m = log(n)
+
+n = 1, m = 0 -> loop block: 0
+n = 2, m = 1 -> loop block: 1
+n = 4, m = 2 -> loop block: 2 + 1
+n = 8, m = 3 -> loo[ block: 3 + 2 + 1
+n    , m    -> loop block: (m * (m + 1)) / 2 = (m^2 + m) / 2
+
+sum: 7 (log(n))^2 + 13 log(n) + 5
